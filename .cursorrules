@@ -1,0 +1,65 @@
+$LUCA Memecoin Landing Page
+
+1. Hero Section (The Most Important Part)
+	•	Main Visual:
+	•	The 5-stage LUCA progression (from sad → neutral → happy) ased on value of the token.
+	•	Animated or interactive if possible (e.g., LUCA changes as you hover or scroll).
+	•	Tagline (Big & Bold)
+	•	Call-to-Action (CTA):
+	•	A single, large “Get $LUCA” button that links directly to buy instructions.
+	•	Simple Token Info (Right Below CTA):
+	•	Total Supply: [Insert Number]
+	•	No Presale, No Team Tokens – Just pure memecoin fun.
+	•	100% Community-Driven
+	•	Visual Progress Bar:
+	•	A small tracker showing LUCA’s happiness level based on price.
+
+2. About $LUCA (Short & Sweet)
+	•	LUCA’s Story:
+	•	LUCA started sad.
+	•	As people join, he gets happier.
+	•	No roadmap, just vibes.
+	•	Why Buy?
+	•	No complicated tokenomics.
+	•	Just hold & enjoy the ride.
+
+3. Quick Buy Instructions
+	•	Where to Get It?
+	•	Available on [Uniswap/PancakeSwap].
+	•	Copy & paste contract address.
+
+4. Footer (Minimalist)
+	•	Disclaimer: ”$LUCA is just a meme. No promises, no guarantees—just fun.”
+	•	Smart Contract Address (for transparency).
+
+Design Notes:
+	•	Hero Section is Everything: All key info is above the fold.
+	•	Simple, Bold, and Playful: No distractions—just LUCA’s journey.
+	•	Minimal Scrolling Needed: Just enough to tease and convert.
+
+Tech Stack:
+    1.	Astro.js
+    2.	Motion.js
+    3.	Three.js
+    4.	Tailwind CSS
+
+$LUCA Landing Page – Design & Style Guide
+
+Style:
+	•	Pixel-Art, Retro Game Aesthetic
+	•	Dark, Deep Background for contrast
+	•	Vibrant LUCA Colors to highlight emotion shifts
+	•	Bold, Chunky Fonts for a nostalgic feel
+
+Layout:
+	•	Hero Section is the Focus – LUCA’s 5-stage progression is front and center
+	•	Big Call-to-Action (CTA) – “Get $LUCA” button, pixel-styled
+	•	Minimalist UI – Simple, straight to the point
+
+Effects & Feel:
+	•	Smooth LUCA Transition (hover or scroll-based animation)
+	•	Subtle Glow & Movement for a modern touch
+	•	Old-School Game Elements – Pixel progress bars, icon-based tokenomics
+
+Vibe:
+Clean, fun, and Web3-ready. No clutter, just LUCA’s journey + an easy buy button. 🚀
