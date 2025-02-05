@@ -11,27 +11,34 @@ const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerH
 const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
 
 // Create grid
-const size = 200;
-const divisions = 100;
+const size = 300;
+const divisions = 150;
 const gridHelper = new THREE.GridHelper(size, divisions, 0xff00ff, 0x00ffff);
-gridHelper.position.y = -10;
+gridHelper.position.y = -15;
 scene.add(gridHelper);
 
 // Add particles
 const particlesGeometry = new THREE.BufferGeometry();
-const particlesCount = 3000;
+const particlesCount = 5000;
 const posArray = new Float32Array(particlesCount * 3);
 
-for(let i = 0; i < particlesCount * 3; i++) {
-    posArray[i] = (Math.random() - 0.5) * 100;
+for(let i = 0; i < particlesCount * 3; i += 3) {
+    // Create a more interesting distribution
+    const radius = Math.random() * 100;
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.random() * Math.PI;
+    
+    posArray[i] = radius * Math.sin(phi) * Math.cos(theta);
+    posArray[i + 1] = radius * Math.sin(phi) * Math.sin(theta) - 20;
+    posArray[i + 2] = radius * Math.cos(phi);
 }
 
 particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 const particlesMaterial = new THREE.PointsMaterial({
-    size: 0.05,
+    size: 0.08,
     color: 0xff00ff,
     transparent: true,
-    opacity: 0.5
+    opacity: 0.6
 });
 
 const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
@@ -44,19 +51,19 @@ const updateSize = () => {
     const isMobile = width < 768;
 
     renderer.setSize(width, height);
-    renderer.setPixelRatio(1); // Force pixelated look
+    renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);
 
     // Adjust camera and scene for mobile
     if (isMobile) {
-        camera.position.z = 40;
-        camera.position.y = 15;
-        gridHelper.scale.set(0.8, 0.8, 0.8);
-        particlesMesh.scale.set(0.8, 0.8, 0.8);
-    } else {
-        camera.position.z = 50;
+        camera.position.z = 45;
         camera.position.y = 20;
-        gridHelper.scale.set(1.5, 1.5, 1.5);
-        particlesMesh.scale.set(1.2, 1.2, 1.2);
+        gridHelper.scale.set(0.7, 0.7, 0.7);
+        particlesMesh.scale.set(0.7, 0.7, 0.7);
+    } else {
+        camera.position.z = 60;
+        camera.position.y = 25;
+        gridHelper.scale.set(1.8, 1.8, 1.8);
+        particlesMesh.scale.set(1.4, 1.4, 1.4);
     }
 };
 
@@ -91,30 +98,30 @@ const frameInterval = 1000 / targetFPS;
 function animate(currentTime) {
     requestAnimationFrame(animate);
 
-    // Throttle render rate
+    // Improved frame throttling
     const deltaTime = currentTime - lastRenderTime;
     if (deltaTime < frameInterval) return;
 
     lastRenderTime = currentTime - (deltaTime % frameInterval);
-    time += 0.001;
+    time += 0.0008; // Slower, smoother animation
 
-    // Cache transform values
-    const timeBasedY = Math.sin(time) * 2;
-    const timeBasedRotation = time * 0.1;
+    // Enhanced animations
+    const timeBasedY = Math.sin(time) * 3;
+    const timeBasedRotation = time * 0.08;
     const normalizedScroll = (scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 2 - 1;
-    const scrollBasedX = normalizedScroll * 10;
+    const scrollBasedX = normalizedScroll * 15;
     
-    // Batch geometry updates
+    // Smoother geometry updates
     gridHelper.position.y = timeBasedY;
-    gridHelper.rotation.y = normalizedScroll * 0.2;
+    gridHelper.rotation.y = normalizedScroll * 0.3;
     
     particlesMesh.rotation.y = timeBasedRotation;
-    particlesMesh.position.x = -scrollBasedX * 0.5;
+    particlesMesh.rotation.x = timeBasedRotation * 0.5;
+    particlesMesh.position.x = -scrollBasedX * 0.8;
     
     camera.position.x = scrollBasedX;
     camera.lookAt(scene.position);
     
-    // Render scene
     renderer.render(scene, camera);
 }
 
