@@ -1,7 +1,9 @@
 ---
 ---
 
-<div id="retro-background" class="fixed inset-0 w-screen h-screen overflow-hidden z-0"></div>
+<div id="retro-background" class="fixed inset-0 w-screen h-screen overflow-hidden z-0">
+    <div class="animated-bg"></div>
+</div>
 
 <script>
 import * as THREE from 'three';
@@ -9,6 +11,18 @@ import * as THREE from 'three';
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
+
+// Add fog with a subtle color
+scene.fog = new THREE.FogExp2(0x1a1a2e, 0.008);
+
+// Create a subtle ambient light
+const ambientLight = new THREE.AmbientLight(0x312e81, 0.5);
+scene.add(ambientLight);
+
+// Add point light for depth
+const pointLight = new THREE.PointLight(0xff00ff, 0.5);
+pointLight.position.set(0, 30, 0);
+scene.add(pointLight);
 
 // Create grid
 const size = 300;
@@ -68,7 +82,12 @@ const updateSize = () => {
 };
 
 updateSize();
-document.getElementById('retro-background').appendChild(renderer.domElement);
+const retroBackground = document.getElementById('retro-background');
+if (retroBackground) {
+    retroBackground.appendChild(renderer.domElement);
+} else {
+    console.error('Could not find retro-background element');
+}
 
 // Position camera
 camera.position.z = 30;
@@ -105,11 +124,19 @@ function animate(currentTime) {
     lastRenderTime = currentTime - (deltaTime % frameInterval);
     time += 0.0008; // Slower, smoother animation
 
-    // Enhanced animations
+    // Enhanced animations with color transitions
     const timeBasedY = Math.sin(time) * 3;
     const timeBasedRotation = time * 0.08;
     const normalizedScroll = (scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 2 - 1;
     const scrollBasedX = normalizedScroll * 15;
+    
+    // Dynamic fog color
+    const fogHue = (Math.sin(time * 0.5) + 1) * 0.5;
+    scene.fog.color.setHSL(0.6 + fogHue * 0.1, 0.5, 0.1);
+    
+    // Animate point light
+    pointLight.position.x = Math.sin(time) * 30;
+    pointLight.position.z = Math.cos(time) * 30;
     
     // Smoother geometry updates
     gridHelper.position.y = timeBasedY;
@@ -145,6 +172,30 @@ animate();
 #retro-background {
     pointer-events: none;
     opacity: 0.3;
+}
+
+.animated-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #0a0a1a, #1a1a2e, #312e81);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 canvas {
