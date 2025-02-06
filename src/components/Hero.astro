@@ -380,22 +380,29 @@ import RetroBackground from './RetroBackground.astro';
     
     // Fixed holder values for each stage
     const stageMapping = [
-        { progress: 0, holders: 100 },
-        { progress: 25, holders: 1000 },
-        { progress: 50, holders: 10000 },
-        { progress: 75, holders: 100000 },
-        { progress: 100, holders: 1000000 }
+        { progress: 0, holders: 100, stage: 1 },
+        { progress: 25, holders: 1000, stage: 2 },
+        { progress: 50, holders: 10000, stage: 3 },
+        { progress: 75, holders: 100000, stage: 4 },
+        { progress: 100, holders: 1000000, stage: 5 }
     ];
 
     function updateLUCAState(progress) {
         if (!progressElement) return;
 
         // Update stage and image
-        const stage = Math.ceil((progress / 100) * totalStages);
-        if (stage !== currentStage) {
-            currentStage = stage;
-            document.querySelectorAll('[data-stage]').forEach(img => {
-                img.style.opacity = img.dataset.stage == stage ? '1' : '0';
+        let newStage = 1; // Default to first stage
+        for (const mapping of stageMapping) {
+            if (progress >= mapping.progress) {
+                newStage = mapping.stage;
+            }
+        }
+
+        if (newStage !== currentStage) {
+            currentStage = newStage;
+            document.querySelectorAll('[data-stage]').forEach((img) => {
+                const imgElement = img as HTMLImageElement;
+                imgElement.style.opacity = imgElement.dataset.stage == String(newStage) ? '1' : '0';
             });
         }
         
@@ -410,7 +417,7 @@ import RetroBackground from './RetroBackground.astro';
         
         // Calculate and update holders
         let currentHolders = 100; // Default value
-        for (let i = 1; i < stageMapping.length; i++) {
+        for (let i = 0; i < stageMapping.length; i++) {
             if (progress <= stageMapping[i].progress) {
                 const prevPoint = stageMapping[i - 1];
                 const nextPoint = stageMapping[i];
