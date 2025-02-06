@@ -2,149 +2,446 @@
 import RetroBackground from './RetroBackground.astro';
 ---
 
-<section class="min-h-screen flex flex-col items-center justify-center py-24 relative overflow-hidden">
+<section class="min-h-screen relative overflow-hidden flex items-center justify-center py-16">
     <RetroBackground />
     <div class="vignette"></div>
-    
-    <div class="relative z-10 w-full max-w-3xl mx-auto px-4 space-y-16">
-        <!-- LUCA Logo -->
-        <div class="transform hover:scale-105 transition-transform floating">
-            <img 
-                src="/images/logo.png" 
-                alt="LUCA Logo" 
-                class="w-[500px] h-auto mx-auto pixel-perfect"
-            />
-        </div>
 
-        <!-- Main Tagline -->
-        <div class="space-y-6">
-            <h1 class="text-3xl md:text-5xl font-bold text-center pixel-text glitch">
-                From Sad to Happy:<br/>
-                <span class="neon-text inline-block mt-4">
-                    $LUCA's Journey
-                </span>
-            </h1>
+    <div class="relative z-20 container mx-auto px-4">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-32 items-center">
+            <!-- Content Column -->
+            <div class="text-center lg:text-left flex flex-col justify-between h-full order-1 lg:order-1">
+                <!-- Logo -->
+                <div>
+                    <img 
+                        src="/images/logo.png" 
+                        alt="LUCA Logo" 
+                        class="w-full max-w-[500px] mx-auto lg:mx-0 hover:animate-pulse"
+                    />
+                </div>
 
-            <!-- Token Info -->
-            <div class="text-center">
-                <p class="text-xl mb-6 text-purple-200 pixel-text-sm">Total Supply: 1,000,000,000 $LUCA</p>
-                <div class="flex flex-wrap justify-center gap-3">
-                    <span class="pixel-border px-6 py-3 text-pink-200">No Presale</span>
-                    <span class="pixel-border px-6 py-3 text-pink-200">No Team Tokens</span>
-                    <span class="pixel-border px-6 py-3 text-pink-200">100% Community-Driven</span>
+                <!-- Tagline -->
+                <div class="tagline-container relative mt-12 mb-3">
+                    <div class="flex flex-col items-center lg:items-start gap-3">
+                        <div class="relative">
+                            <h1 class="text-4xl md:text-6xl font-bold modern-text leading-tight">
+                                <div class="space-y-3">
+                                    <span class="block">The First Memecoin</span>
+                                    <span class="block">
+                                        That Gets
+                                        <span class="relative inline-block">
+                                            <span class="text-pink-500 happiness-text">Happier</span>
+                                        </span>
+                                    </span>
+                                    <span class="block">With Every Buy</span>
+                                </div>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Info Box -->
+                <div class="bg-black/20 backdrop-blur-sm rounded-lg border border-pink-500/20 p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <h3 class="text-lg font-bold text-pink-500">LUCA's Story</h3>
+                            <p class="text-sm text-purple-200/80">
+                                LUCA started sad, but as our community grows, he gets happier! 
+                                No complicated tokenomics, no roadmap - just pure memecoin vibes.
+                            </p>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-lg font-bold text-pink-500">Tokenomics</h3>
+                            <ul class="text-sm text-purple-200/80 space-y-1">
+                                <li class="flex items-center gap-2">
+                                    <iconify-icon icon="ph:check-circle-fill" class="text-pink-500"></iconify-icon>
+                                    No Presale
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <iconify-icon icon="ph:check-circle-fill" class="text-pink-500"></iconify-icon>
+                                    No Team Tokens
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <iconify-icon icon="ph:check-circle-fill" class="text-pink-500"></iconify-icon>
+                                    100% Community Owned
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- LUCA Progression States -->
-        <div class="relative aspect-square max-w-[300px] mx-auto">
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/10 to-transparent rounded-lg"></div>
-            {[1, 2, 3, 4, 5].map((stage) => (
-                <img
-                    src={`/images/luca-${stage}.png`}
-                    alt={`LUCA Stage ${stage}`}
-                    class={`absolute top-0 left-0 w-full h-full object-contain transition-all duration-500 pixel-perfect ${stage === 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-                    data-stage={stage}
-                />
-            ))}
-        </div>
+            <!-- Right Column: LUCA Progress -->
+            <div class="flex flex-col gap-12 order-2 lg:order-2 mt-12 lg:mt-0">
+                <!-- LUCA Character Display -->
+                <div class="relative group w-[200px] md:w-[280px] mx-auto">
+                    <!-- Glow Effect -->
+                    <div class="absolute inset-0 bg-purple-900/30 blur-3xl rounded-full"></div>
+                    
+                    <!-- Outer Frame -->
+                    <div class="relative">
+                        <!-- Corner Decorations -->
+                        <div class="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-pink-500/50"></div>
+                        <div class="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-pink-500/50"></div>
+                        <div class="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-pink-500/50"></div>
+                        <div class="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-pink-500/50"></div>
+                        
+                        <!-- Main Frame -->
+                        <div class="relative aspect-square bg-black/40 p-4 rounded-2xl backdrop-blur-sm">
+                            <!-- Inner Border -->
+                            <div class="absolute inset-0 rounded-2xl border-2 border-purple-500/20"></div>
+                            
+                            <!-- Inner Glow Frame -->
+                            <div class="absolute inset-4 rounded-xl border border-pink-500/10 bg-gradient-to-b from-pink-500/5 to-purple-500/5"></div>
+                            
+                            <!-- Character Images -->
+                            {[1, 2, 3, 4, 5].map((stage) => (
+                                <img
+                                    src={`/images/luca-${stage}.png`}
+                                    alt={`LUCA Stage ${stage}`}
+                                    class={`absolute inset-0 w-full h-full object-contain transition-all duration-500 pixel-perfect ${stage === 1 ? 'opacity-100' : 'opacity-0'}`}
+                                    data-stage={stage}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </div>
 
-        <!-- Progress Bar -->
-        <div class="w-full max-w-xs mx-auto">
-            <div class="pixel-border p-1 bg-black/40">
-                <div class="bg-black/80 h-4 overflow-hidden">
-                    <div id="progress" class="progress-bar h-full w-[20%] transition-all duration-1000 progress-glow"></div>
+                <!-- Progress Section -->
+                <div class="space-y-4">
+                    <div class="flex flex-col">
+                        <div class="text-xs font-medium tracking-widest text-purple-200/50 uppercase mb-3">
+                            Happiness Level
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="text-5xl font-bold text-pink-500 drop-shadow-[0_0_8px_rgba(236,72,153,0.5)]">20%</div>
+                            <div class="flex-1 h-10 border-l-2 border-purple-500/20 pl-4">
+                                <div class="text-2xl font-bold text-pink-400/90 drop-shadow-[0_0_8px_rgba(236,72,153,0.3)]">100</div>
+                                <div class="text-xs uppercase tracking-wider text-purple-200/50">
+                                    Current Holders
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <!-- Background Bar -->
+                        <div class="h-10 bg-black/40 rounded-lg backdrop-blur-sm border border-purple-500/20 overflow-hidden">
+                            <!-- Progress Fill -->
+                            <div id="progress" 
+                                class="h-full w-[20%] transition-all duration-1000 relative progress-fill"
+                            >
+                                <!-- Shine Effect -->
+                                <div class="absolute inset-0 shine-wrapper overflow-hidden">
+                                    <div class="absolute inset-0 shine"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Value Markers -->
+                        <div class="absolute -bottom-5 inset-x-0">
+                            <div class="relative flex justify-between px-2">
+                                {[0, 25, 50, 75, 100].map((position) => (
+                                    <div class="text-[10px] text-purple-200/60">
+                                        {position === 0 ? '100' :
+                                         position === 25 ? '1K' :
+                                         position === 50 ? '10K' :
+                                         position === 75 ? '100K' : '1M'}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col items-center gap-6">
+                    <a 
+                        href="#buy" 
+                        class="buy-button group inline-flex items-center justify-center px-12 py-4 text-xl font-semibold"
+                    >
+                        BUY $LUCA
+                    </a>
+                    <a 
+                        href="#info" 
+                        class="info-button text-sm font-medium tracking-wide px-6 py-2 transition-all duration-200"
+                    >
+                        More Info
+                    </a>
                 </div>
             </div>
-        </div>
-
-        <!-- CTA Button -->
-        <div class="text-center pt-4">
-            <a 
-                href="#buy" 
-                class="inline-block pixel-button py-4 px-16 text-xl hover:scale-105"
-            >
-                Get $LUCA
-            </a>
         </div>
     </div>
 </section>
 
 <style>
-.particles {
-    background: transparent;
-    background-image: 
-        radial-gradient(white 1px, transparent 1px),
-        radial-gradient(white 1px, transparent 1px);
-    background-size: 50px 50px;
-    background-position: 0 0, 25px 25px;
-    animation: particleAnimation 150s linear infinite;
-}
+    /* Import fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-@keyframes particleAnimation {
-    from {
+    .modern-text {
+        font-family: 'Inter', sans-serif;
+        letter-spacing: -0.02em;
+    }
+
+    .pixel-text {
+        font-family: 'Press Start 2P', monospace;
+        letter-spacing: 0.1em;
+        line-height: 1.8;
+    }
+
+    .neo-brutalism-button {
+        background: #ec4899;
+        border: 2px solid #4f46e5;
+        box-shadow: 4px 4px 0 #1a1a2e;
+        border-radius: 4px;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        transform: translate(-1px, -1px);
+        transition: all 0.2s ease;
+    }
+
+    .neo-brutalism-button:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0 #1a1a2e;
+    }
+
+    .neo-brutalism-button:active {
         transform: translate(0, 0);
+        box-shadow: 2px 2px 0 #1a1a2e;
     }
-    to {
-        transform: translate(-50px, -50px);
+
+    .progress-glow {
+        background: linear-gradient(90deg, 
+            #ec4899 0%,
+            #a855f7 50%,
+            #ec4899 100%
+        );
+        background-size: 200% 100%;
+        animation: gradientMove 2s linear infinite;
     }
-}
 
-.progress-bar {
-    background: linear-gradient(90deg, 
-        rgba(236, 72, 153, 1) 0%,
-        rgba(168, 85, 247, 1) 50%,
-        rgba(236, 72, 153, 1) 100%
-    );
-    background-size: 200% 100%;
-    animation: gradientMove 2s linear infinite;
-}
+    @keyframes gradientMove {
+        0% { background-position: 100% 0%; }
+        100% { background-position: -100% 0%; }
+    }
 
-@keyframes gradientMove {
-    0% { background-position: 100% 0%; }
-    100% { background-position: -100% 0%; }
-}
+    .progress-fill {
+        background: linear-gradient(90deg, 
+            rgba(236,72,153,0.7) 0%, 
+            rgba(236,72,153,0.9) 100%
+        );
+    }
+
+    .shine-wrapper {
+        mask-image: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+    }
+
+    .shine {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.08) 50%,
+            transparent
+        );
+        animation: shine 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes shine {
+        0% {
+            transform: translateX(-150%);
+        }
+        100% {
+            transform: translateX(150%);
+        }
+    }
+
+    .progress-number {
+        text-shadow: 0 0 20px rgba(236,72,153,0.5);
+    }
+
+    .buy-button {
+        font-family: 'Press Start 2P', monospace;
+        background: rgba(236, 72, 153, 0.1);
+        border: 2px solid rgba(236, 72, 153, 0.3);
+        border-radius: 2px;
+        color: rgb(236, 72, 153);
+        position: relative;
+        transition: all 0.2s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        padding: 1.25rem 3.5rem;
+        font-size: 1rem;
+        animation: buttonPulse 2s infinite;
+    }
+
+    .buy-button::before {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        background: rgba(236, 72, 153, 0.1);
+        z-index: -1;
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            100% calc(100% - 6px),
+            calc(100% - 6px) 100%,
+            0 100%
+        );
+    }
+
+    @keyframes buttonPulse {
+        0%, 100% {
+            box-shadow: 
+                0 0 0 0 rgba(236, 72, 153, 0),
+                inset 0 0 0 0 rgba(236, 72, 153, 0);
+        }
+        50% {
+            box-shadow: 
+                0 0 10px 2px rgba(236, 72, 153, 0.2),
+                inset 0 0 5px 1px rgba(236, 72, 153, 0.1);
+        }
+    }
+
+    .buy-button:hover {
+        background: rgba(236, 72, 153, 0.2);
+        border-color: rgba(236, 72, 153, 0.5);
+        transform: translateY(-1px);
+        color: rgb(244, 114, 182);
+        text-shadow: 0 0 8px rgba(236, 72, 153, 0.5);
+    }
+
+    .buy-button:active {
+        transform: translateY(1px);
+    }
+
+    .happiness-text {
+        animation: colorPulse 4s infinite;
+    }
+
+    @keyframes colorPulse {
+        0%, 100% { color: theme('colors.pink.500'); }
+        50% { color: theme('colors.purple.400'); }
+    }
+
+    .tagline-container {
+        perspective: 1000px;
+    }
+
+    .tagline-container:hover .modern-text {
+        transform: translateZ(20px);
+        transition: transform 0.3s ease;
+    }
+
+    .pixel-perfect {
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+    }
+
+    .info-button {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 0.75rem;
+        color: rgba(236, 72, 153, 0.8);
+        background: rgba(236, 72, 153, 0.1);
+        border-radius: 4px;
+        backdrop-filter: blur(4px);
+    }
+
+    .info-button:hover {
+        color: rgba(236, 72, 153, 1);
+        background: rgba(236, 72, 153, 0.15);
+        transform: translateY(-1px);
+    }
+
+    .info-button:active {
+        transform: translateY(0px);
+    }
+
+    .vignette {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+        pointer-events: none;
+        z-index: 5;
+    }
 </style>
+
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
 <script>
     let currentStage = 1;
     const totalStages = 5;
-    const progressElement = document.getElementById('progress') as HTMLElement;
-    let currentProgress = 20; // Starting progress percentage
+    const progressElement = document.getElementById('progress');
+    let currentProgress = 20;
+    
+    // Fixed holder values for each stage
+    const stageMapping = [
+        { progress: 0, holders: 100 },
+        { progress: 25, holders: 1000 },
+        { progress: 50, holders: 10000 },
+        { progress: 75, holders: 100000 },
+        { progress: 100, holders: 1000000 }
+    ];
 
-    function updateLUCAState(progress: number) {
+    function updateLUCAState(progress) {
+        if (!progressElement) return;
+
+        // Update stage and image
         const stage = Math.ceil((progress / 100) * totalStages);
-        
         if (stage !== currentStage) {
             currentStage = stage;
-            document.querySelectorAll('[data-stage]').forEach((element) => {
-                const img = element as HTMLElement;
-                const imgStage = parseInt(img.dataset.stage || '1');
-                if (imgStage === stage) {
-                    img.style.opacity = '1';
-                    img.style.transform = 'scale(1)';
-                    img.style.filter = 'drop-shadow(0 0 15px rgba(255, 0, 255, 0.5))';
-                } else {
-                    img.style.opacity = '0';
-                    img.style.transform = 'scale(0.95)';
-                    img.style.filter = 'none';
-                }
+            document.querySelectorAll('[data-stage]').forEach(img => {
+                img.style.opacity = img.dataset.stage == stage ? '1' : '0';
             });
+        }
+        
+        // Update progress bar width
+        progressElement.style.width = `${progress}%`;
+        
+        // Update progress percentage
+        const progressText = document.querySelector('.text-5xl.text-pink-500');
+        if (progressText) {
+            progressText.textContent = `${progress}%`;
+        }
+        
+        // Calculate and update holders
+        let currentHolders = 100; // Default value
+        for (let i = 1; i < stageMapping.length; i++) {
+            if (progress <= stageMapping[i].progress) {
+                const prevPoint = stageMapping[i - 1];
+                const nextPoint = stageMapping[i];
+                const progressRange = nextPoint.progress - prevPoint.progress;
+                const holdersRange = nextPoint.holders - prevPoint.holders;
+                const progressRatio = (progress - prevPoint.progress) / progressRange;
+                currentHolders = Math.round(prevPoint.holders + (holdersRange * progressRatio));
+                break;
+            }
+        }
+
+        // Update holders display in progress section
+        const holdersText = document.querySelector('.text-2xl.text-pink-400\\/90');
+        if (holdersText) {
+            holdersText.textContent = 
+                currentHolders >= 1000 
+                    ? `${(currentHolders / 1000).toFixed(1)}K` 
+                    : currentHolders.toString();
         }
     }
 
-    // Simulate progress increase
     function incrementProgress() {
         if (currentProgress < 100) {
             currentProgress += 1;
-            progressElement.style.width = `${currentProgress}%`;
             updateLUCAState(currentProgress);
         }
     }
 
-    // Update progress every 3 seconds
-    setInterval(incrementProgress, 3000);
-
-    // Initialize with starting state
+    // Initial update
     updateLUCAState(currentProgress);
+
+    // Start progress animation
+    setInterval(incrementProgress, 3000);
 </script>
