@@ -13,7 +13,7 @@ import RetroBackground from './RetroBackground.astro';
                 <!-- Logo -->
                 <div>
                     <img 
-                        src="/images/logo.png" 
+                        src="/luca/images/logo.png" 
                         alt="LUCA Logo" 
                         class="w-full max-w-[500px] mx-auto lg:mx-0 hover:animate-pulse"
                     />
@@ -96,7 +96,7 @@ import RetroBackground from './RetroBackground.astro';
                             <!-- Character Images -->
                             {[1, 2, 3, 4, 5].map((stage) => (
                                 <img
-                                    src={`/images/luca-${stage}.png`}
+                                    src={`/luca/images/luca-${stage}.png`}
                                     alt={`LUCA Stage ${stage}`}
                                     class={`absolute inset-0 w-full h-full object-contain transition-all duration-500 pixel-perfect ${stage === 1 ? 'opacity-100' : 'opacity-0'}`}
                                     data-stage={stage}
